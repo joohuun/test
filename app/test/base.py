@@ -3,20 +3,21 @@ import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
 class BaseTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls) -> None:
-        
-        chrome_options = webdriver.ChromeOptions()
-        # 웹페이지 끄고 테스트하는 옵션
-        chrome_options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+
+        options = webdriver.ChromeOptions()
         # chrome_options.add_argument("--headless")
+        options.set_capability('browserName', 'chrome')
+        options.add_experimental_option("debuggerAddress", "0.0.0.0:9222")
         cls.driver = webdriver.Chrome(
-            service=Service(ChromeDriverManager().install()), options=chrome_options
+            service=Service(ChromeDriverManager().install()), options=options
         )
-        
+
     def setUp(self) -> None:
         pass
 

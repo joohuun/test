@@ -5,7 +5,7 @@ from config.account import email, password, resident_num, my_bank, account_num
 
 
 class EmailSginIn(Base):
-    signin_url = "https://qa.wiprex.com/signin"
+    signin_url = "https://qa.fingo.run/signin"
     email = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[2]/div[2]/input')
     password = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[2]/div[3]/input')
     login_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[2]/div[4]/button')
@@ -25,14 +25,15 @@ class EmailSginIn(Base):
 
 
 class ConfirmEamil(Base):
-    signin_url = "https://qa.wiprex.com/signin"
-    main_url = "https://qa.wiprex.com/"
+    signin_url = "https://qa.fingo.run/signin"
+    main_url = "https://qa.fingo.run/"
     email = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[2]/div[2]/input')
     password = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[2]/div[3]/input')
     resident_num = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div[2]/div[2]/div[2]/input')
     login_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[2]/div[4]/button')
-    detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[2]/div/button/img')
-    wallet_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[3]/div/div[3]/div[5]')
+    
+    detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[3]/div/button/img')
+    wallet_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[3]/div/div[3]/div[3]')
     deposit_withdraw_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div/div[1]/div[2]/button')
     email_confirm_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div/div[2]/div/div[1]/div[2]/div[2]/div[2]/div[2]/button')
     email_confirm_status = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div/div[2]/div/div[1]/div[2]/div[1]/button/div')
@@ -56,17 +57,23 @@ class ConfirmEamil(Base):
 
 
 class ConfirmAccount(Base):
-    signin_url = "https://qa.wiprex.com/signin"
-    main_url = "https://qa.wiprex.com/"
+    signin_url = "https://qa.fingo.run/signin"
+    main_url = "https://qa.fingo.run/"
+
     email = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[2]/div[2]/input')
     password = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[2]/div[3]/input')
     login_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[2]/div[4]/button')
-    detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[2]/div/button/img')
-    wallet_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[3]/div/div[3]/div[5]')
-    deposit_withdraw_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div/div[1]/div[2]/button')
-    account_num = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div[3]/div[2]/div/input')
 
-    account_confirm_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div/div[2]/div/div[1]/div[1]/div[1]/button/div')
+    detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[3]/div/button/img')
+    wallet_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[3]/div/div[3]/div[3]')
+    deposit_withdraw_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div/div[1]/div[2]/button')
+
+    # detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[2]/div/button/img')
+    # wallet_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[3]/div/div[3]/div[5]')
+    # deposit_withdraw_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div/div[1]/div[2]/button')
+
+    account_num = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div[3]/div[2]/div/input')
+    account_confirm_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div/div/div[2]/div/div[1]/div[1]/div[1]/button/div')
     open_bank_list_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div[2]/div[2]/span')
 
 

@@ -2,21 +2,23 @@ import time
 from selenium.webdriver.common.by import By
 from pages.wiprex.account import EmailSginIn, ConfirmAccount, ConfirmEamil
 from ..base import BaseTest
+from selenium.webdriver import ActionChains
 
 
 
 # chromeDriverPath = 'chrome_driver_path'
 # driver = webdriver.Chrome(chromeDriverPath)
 
-# class TestSginin(BaseTest):
-#     def test_로그인(self):
-#         email_signin = EmailSginIn(self.driver)
-#         email_signin.get(email_signin.signin_url)
-#         email_signin.send_keys_email_id()
-#         email_signin.send_keys_email_pw()
-#         email_signin.click(email_signin.login_btn)
-#         time.sleep(2)
-#         self.assertEqual(self.driver.current_url, "https://qa.wiprex.com/")
+class TestSginin(BaseTest):
+    def test_로그인(self):
+        email_signin = EmailSginIn(self.driver)
+        email_signin.get(email_signin.signin_url)
+        email_signin.send_keys_email_id()
+        email_signin.send_keys_email_pw()
+        email_signin.click(email_signin.login_btn)
+        time.sleep(2)
+        self.assertEqual(self.driver.current_url, "https://qa.fingo.run/")
+        print("1")
 
 
 class TestConfirmEmail(BaseTest):
@@ -44,35 +46,33 @@ class TestConfirmEmail(BaseTest):
             confirm_email.click(confirm_email.verification_completed_btn)
 
         self.assertEqual(status, "인증완료")
-        self.assertEqual(self.driver.current_url, "https://qa.wiprex.com/wallet?tab=account")
-
+        self.assertEqual(self.driver.current_url, "https://qa.fingo.run/wallet?tab=account")
 
 class TestConfirmAccount(BaseTest):
     def test_계좌인증(self):
         time.sleep(2)
         confrim_account = ConfirmAccount(self.driver)
-        # confrim_account.get(confrim_account.signin_url)
-        # confrim_account.send_keys_email_id()
-        # confrim_account.send_keys_email_pw()
-        # confrim_account.click(confrim_account.login_btn)
-        # time.sleep(2)
+        confrim_account.get(confrim_account.signin_url)
+        confrim_account.send_keys_email_id()
+        confrim_account.send_keys_email_pw()
+        confrim_account.click(confrim_account.login_btn)
+        time.sleep(2)
+        print('1')
         confrim_account.get(confrim_account.main_url)
         confrim_account.click(confrim_account.detail_btn)
         confrim_account.click(confrim_account.wallet_btn)
         confrim_account.click(confrim_account.deposit_withdraw_btn)
-        time.sleep(2)
-
         confrim_account.click(confrim_account.account_confirm_btn)
         confrim_account.click(confrim_account.open_bank_list_btn)
-
         option = self.driver.find_element(By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[4]/div[1]/div[2]/div[2]/div/div/div[12]')
-        self.driver.execute_script("arguments[0].scrollIntoView();", option)
+        action = ActionChains(self.driver)
+        action.move_to_element(option).perform()
         option.click()
         confrim_account.send_keys_account_num()
         confrim_account.click(confrim_account.account_vertification_btn)
         status = confrim_account.find_element(confrim_account.account_confirm_status).text
         
-        self.assertEqual(self.driver.current_url, "https://qa.wiprex.com/info")
+        self.assertEqual(self.driver.current_url, "https://qa.fingo.run/info")
         self.assertEqual(status, "변경하기")
 
         confrim_account.click(confrim_account.detail_btn)
@@ -81,5 +81,5 @@ class TestConfirmAccount(BaseTest):
 
         status2 = confrim_account.find_element(confrim_account.account_confirm_status2).text
 
-        self.assertEqual(self.driver.current_url, "https://qa.wiprex.com/wallet?tab=account")
+        self.assertEqual(self.driver.current_url, "https://qa.fingo.run/wallet?tab=account")
         self.assertEqual(status2, "인증완료")
