@@ -1,5 +1,5 @@
 # selenium_uitest
 
 ```
-docker build -t test.
+docker build -t chromedriver .
 ```
