@@ -9,7 +9,7 @@ class Search(BaseTest):
         search_product = SearchProduct(self.driver)
         search_product.get(search_product.search_in_url)
         search_product.send_keys_keyworld()
-        time.sleep(2)
+        time.sleep(1)
         search_product.click(search_product.search_result_page)
         
-        self.assertEqual(self.driver.current_url, "https://qa.wiprex.com/copyright/UHJvZHVjdDoxNjI=")
+        self.assertEqual(self.driver.current_url, "https://qa.fingo.run/copyright/UHJvZHVjdDoxNjI=")

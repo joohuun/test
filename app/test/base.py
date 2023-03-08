@@ -13,7 +13,7 @@ class BaseTest(unittest.TestCase):
         options = webdriver.ChromeOptions()
         # chrome_options.add_argument("--headless")
         options.set_capability('browserName', 'chrome')
-        options.add_experimental_option("debuggerAddress", "0.0.0.0:9222")
+        options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
         cls.driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install()), options=options
         )
