@@ -1,22 +1,27 @@
 from selenium.webdriver.common.by import By
 from pages.base import Base
 from selenium.webdriver.common.keys import Keys
-from config.data import crm_content_body, crm_content_title, news_link, crm_content_title_update, crm_content_body_update, news_link_udpate
+from config.tower import (
+    tower_base_url,
+    CRMData,
+)
 
 
 class Notice(Base):
-    main_url = 'http://10.2.1.100:5001/tower/'
-    notice_list_url = 'http://10.2.1.100:5001/tower/service/list?tab=0'
-    menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-    crm_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[10]')
-    crm_content_type_news = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[1]/div/div/label[2]/span[2]')
-    crm_content_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[11]/div/div/div/div[1]')
-    crm_content_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[11]/div/div/div/div[2]')
-    crm_content_title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[2]/div/div/div/input')
-    crm_content_body_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div/div/div[2]/div[1]')
-    crm_content_create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[4]/button')
-    crm_content_create_confirm_btn = (By.XPATH, '/html/body/div[2]/div[3]/div[3]/div/button[2]')
-    crm_content_create_alert_msg = (By.XPATH, '//*[@id="root"]/div[2]')
+    main_url = tower_base_url
+    notice_list_url = f'{tower_base_url}service/list?tab=0'
+    noticle_create_url = f'{tower_base_url}service/create'
+
+    title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[2]/div/div/div/input')
+    body_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div/div/div[2]/div[1]')
+    create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[4]/button')
+    create_confirm_btn = (By.XPATH, '/html/body/div[2]/div[3]/div[3]/div/button[2]')
+    
+    update_title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[2]/div/div/div/input')
+    update_body_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div/div/div[2]/div[1]')
+    update_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[4]/button')
+    
+    create_success_alert = (By.XPATH, '//*[@id="root"]/div[2]')
     crm_top_content = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[1]/div[2]/div[2]/div/div/div/div/div/div[1]/div[1]')
     content_post_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div/div/label[1]')
     content_wait_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div/div/label[2]')                                  
@@ -33,35 +38,39 @@ class Notice(Base):
     def get_main_page(self):
         self.get(self.main_url)
 
-    def get_notice_list_url(self):
+    def get_notice_list_page(self):
         self.get(self.notice_list_url)   
 
+    def get_noticle_create_page(self):
+        self.get(self.noticle_create_url)
+
     def send_keys_notice_title(self):
-        self.send_keys(self.crm_content_title_input, crm_content_title)
+        self.send_keys(self.title_input, CRMData.content_title)
     
     def send_keys_notice_body(self):
-        self.send_keys(self.crm_content_body_input, crm_content_body)
+        self.send_keys(self.body_input, CRMData.content_body)
 
     def send_keys_notice_title_update(self):
-        self.send_keys(self.crm_content_title_input, crm_content_title_update)
+        self.send_keys(self.update_title_input, CRMData.content_update_title)
     
     def send_keys_notice_body_update(self):
-        self.send_keys(self.crm_content_body_input, crm_content_body_update)
+        self.send_keys(self.update_body_input, CRMData.content_update_body)
 
 
 class News(Base):
-    main_url = 'http://10.2.1.100:5001/tower/'
-    news_list_url = 'http://10.2.1.100:5001/tower/service/list?tab=1'
-    menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-    crm_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[10]')
-    crm_content_type_news = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[1]/div/div/label[2]/span[2]')
-    crm_content_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[11]/div/div/div/div[1]')
-    crm_content_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[11]/div/div/div/div[2]')
-    crm_content_title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[2]/div/div/div/input')
-    crm_news_link_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div/div/div/input')
-    crm_content_create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[4]/button')
-    crm_content_create_confirm_btn = (By.XPATH, '/html/body/div[2]/div[3]/div[3]/div/button[2]')
-    crm_content_create_alert_msg = (By.XPATH, '//*[@id="root"]/div[2]')
+    main_url = tower_base_url
+    news_list_url = f'{tower_base_url}service/list?tab=1'
+    news_create_url = f'{tower_base_url}service/create'
+
+    type_news = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div/div/label[2]/span[1]/span[1]')
+    news_title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[2]/div/div/div/input')
+    news_link_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div/div/div/input')
+    news_update_title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[2]/div/div/div/input')
+    news_create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[4]/button')
+    news_create_btn2 = (By.XPATH, '/html/body/div[2]/div[3]/div[3]/div/button[2]')
+    news_update_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[4]/button')
+    create_success_alert = (By.XPATH, '//*[@id="root"]/div[2]')
+
     crm_top_content = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[1]/div[2]/div[2]/div/div/div/div/div/div[1]/div[1]')
     content_post_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div/div/label[1]')
     content_wait_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div/div/label[2]')                                  
@@ -78,36 +87,37 @@ class News(Base):
     def get_main_page(self):
         self.get(self.main_url)
 
-    def get_news_list_url(self):
+    def get_news_list_page(self):
         self.get(self.news_list_url)  
+
+    def get_news_create_page(self):
+        self.get(self.news_create_url)
     
     def send_keys_news_title(self):
-        self.send_keys(self.crm_content_title_input, crm_content_title)
+        self.send_keys(self.news_title_input, CRMData.content_title)
 
     def send_keys_news_link(self):
-        self.send_keys(self.crm_news_link_input, news_link)
+        self.send_keys(self.news_link_input, CRMData.news_link)
 
     def send_keys_news_title_update(self):
-        self.send_keys(self.crm_content_title_input, crm_content_title_update)
+        self.send_keys(self.news_update_title_input, CRMData.content_update_title)
     
-    def send_keys_news_link_update(self):
-        self.send_keys(self.crm_news_link_input, news_link_udpate)
-        
     
 class FAQ(Base):
-    main_url = 'http://10.2.1.100:5001/tower/'
-    faq_list_url = 'http://10.2.1.100:5001/tower/service/list?tab=2'
-    menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-    crm_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[10]')
-    crm_content_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[11]/div/div/div/div[1]')
-    crm_content_title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[2]/div/div/div/input')
-    crm_content_body_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div/div/div[2]/div[1]')
-    crm_content_create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[5]/button')
-    crm_content_create_confirm_btn = (By.XPATH, '/html/body/div[2]/div[3]/div[3]/div/button[2]')
-    crm_content_create_alert_msg = (By.XPATH, '//*[@id="root"]/div[2]')
-    crm_content_type_faq = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[1]/div/div/label[3]/span[2]')
-    crm_faq_title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div/div/div/input')
-    crm_faq_booy_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[4]/div/div/div[2]/div[1]')
+    main_url = tower_base_url
+    faq_list_url = f'{tower_base_url}service/list?tab=2'
+    faq_create_url = f'{tower_base_url}service/create'
+
+    type_faq = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div/div/label[3]/span[1]')
+    title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div/div/div/input')
+    body_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[4]/div/div/div[2]/div[1]')
+    update_title_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div/div/div/input')
+    update_body_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[4]/div/div/div[2]/div[1]')
+    create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[5]/button')
+    create_btn2 = (By.XPATH, '/html/body/div[2]/div[3]/div[3]/div/button[2]')
+    update_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[5]/button')
+    create_success_alert = (By.XPATH, '//*[@id="root"]/div[2]')
+    
     crm_top_content = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[1]/div[2]/div[2]/div/div/div/div/div/div[1]/div[1]')
     content_post_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div/div/label[1]')
     content_wait_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div/div/label[2]')                                  
@@ -124,25 +134,28 @@ class FAQ(Base):
     def get_main_page(self):
         self.get(self.main_url)
     
-    def get_faq_list_url(self):
+    def get_faq_list_page(self):
         self.get(self.faq_list_url)
 
+    def get_faq_create_page(self):
+        self.get(self.faq_create_url)
+
     def send_keys_faq_title(self):
-        self.send_keys(self.crm_faq_title_input, crm_content_title)
+        self.send_keys(self.title_input, CRMData.content_title)
 
     def send_keys_faq_body(self):
-        self.send_keys(self.crm_faq_booy_input, crm_content_body)
+        self.send_keys(self.body_input, CRMData.content_body)
 
     def send_keys_faq_title_update(self):
-        self.send_keys(self.crm_faq_title_input, crm_content_title_update)
+        self.send_keys(self.update_title_input, CRMData.content_update_title)
 
     def send_keys_faq_body_update(self):
-        self.send_keys(self.crm_faq_booy_input, crm_content_body_update)
+        self.send_keys(self.update_body_input, CRMData.content_update_body)
 
 
 class Guide(Base):
-    main_url = 'http://10.2.1.100:5001/tower/'
-    guide_url = 'http://10.2.1.100:5001/tower/service/list?tab=3'
+    main_url = tower_base_url
+    guide_url = f'{tower_base_url}service/list?tab=3'
     menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
     crm_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[10]')
     crm_content_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[11]/div/div/div/div[1]')
@@ -151,7 +164,7 @@ class Guide(Base):
     crm_content_body_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div/div/div[2]/div[1]')
     crm_content_create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[4]/button')
     crm_content_create_confirm_btn = (By.XPATH, '/html/body/div[2]/div[3]/div[3]/div/button[2]')
-    crm_content_create_alert_msg = (By.XPATH, '//*[@id="root"]/div[2]')
+    crm_content_create_success_alert = (By.XPATH, '//*[@id="root"]/div[2]')
     crm_content_type_guide = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[1]/div/div/label[4]/span[2]')
     crm_top_content = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[1]/div[2]/div[2]/div/div/div/div/div/div[1]/div[1]')
     content_post_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div/div/label[1]')
@@ -173,13 +186,13 @@ class Guide(Base):
         self.get(self.guide_url)
     
     def send_keys_guide_title(self):
-        self.send_keys(self.crm_content_title_input, crm_content_title)
+        self.send_keys(self.crm_content_title_input, CRMData.content_title)
     
     def send_keys_guide_body(self):
-        self.send_keys(self.crm_content_body_input, crm_content_body)
+        self.send_keys(self.crm_content_body_input, CRMData.content_body)
 
     def send_keys_guide_title_update(self):
-        self.send_keys(self.crm_content_title_input, crm_content_title_update)
+        self.send_keys(self.crm_content_title_input, CRMData.content_title_update)
 
     def send_keys_guide_body_update(self):
-        self.send_keys(self.crm_content_body_input, crm_content_body_update)
+        self.send_keys(self.crm_content_body_input, CRMData.content_body_update)

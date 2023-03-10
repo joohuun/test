@@ -9,6 +9,7 @@ class TestSginin(BaseTest):
     def test_1_signin(self):
         email_signin = EmailSginIn(self.driver)
         email_signin.get(email_signin.signin_url)
+        time.sleep(2)
         email_signin.get_login_page()
         email_signin.send_keys_email()
         email_signin.send_keys_password()
@@ -24,7 +25,7 @@ class TestVerificatin(BaseTest):
         confirm_email.click(confirm_email.wallet_btn)
         confirm_email.click(confirm_email.deposit_withdraw_btn)
         status = confirm_email.find_element(confirm_email.email_confirm_status).text
-        time.sleep(1)
+        time.sleep(2)
 
         if status == '인증완료':
             print("이메일 인증이 완료된 계정입니다.")
