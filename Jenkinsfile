@@ -3,6 +3,7 @@ def ecrLoginHelper="docker-credential-ecr-login"
 // def region="<AWS Region>"
 // def ecrUrl="<AWS ECR URL>"
 def repository="test"
+def IMAGE_NAME = "test"
 // def deployHost="<Deploy VM Private IP>"
 
 pipeline {
