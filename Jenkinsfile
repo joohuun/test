@@ -32,17 +32,18 @@ pipeline {
         stage('push image to aws ECR') {
             steps {
                 sh """
-                aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${IMAGE_NAME}
+                aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $IMAGE_NAME
                 docker push $IMAGE_NAME:latest
                 """
             }
         }
-        stage('pull image by aws ECR')
+        stage('pull image by aws ECR') {
             steps {
                 sh """
-                echo image pull
                 docker pull $IMAGE_NAME:latest
+                docker run --rm -d  -v /tmp/.X11-unix:/tmp/.X11-unix --name uitest $IMAGE_NAME:latest
                 """
             }
+        }
     }
 }
