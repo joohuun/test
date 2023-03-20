@@ -2,9 +2,14 @@ def mainDir="wiprex"
 def ecrLoginHelper="docker-credential-ecr-login"
 // def region="<AWS Region>"
 // def ecrUrl="<AWS ECR URL>"
-def repository="test"
-def IMAGE_NAME = "test"
 // def deployHost="<Deploy VM Private IP>"
+def repository="test"
+
+def AWS_CREDENTIAL_NAME = "aws-key"
+def ECR_PATH = "541062409049.dkr.ecr.ap-northeast-2.amazonaws.com/test"
+def IMAGE_NAME = "test"
+def REGION = "ap-northeast-2"
+
 
 pipeline {
     agent any
@@ -21,6 +26,15 @@ pipeline {
                 docker build -t $IMAGE_NAME:$BUILD_NUMBER .
                 docker tag $IMAGE_NAME:$BUILD_NUMBER $IMAGE_NAME:latest
                 """
+            }
+        }
+        stage('push image aws ECR') {
+            steps {
+                docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_NAME}") {
+                      docker.image("${IMAGE_NAME}:${BUILD_NUMBER}").push()
+                      docker.image("${IMAGE_NAME}:latest").push()
+                    }
+
             }
         }
         // stage('Build Docker Image & Push to AWS ECR Repository') {
