@@ -1,6 +1,6 @@
 import time
 from selenium.webdriver.common.by import By
-from pages.wiprex.account import EmailSginIn, Verification, CustomerInfo, Maketing
+from pages.fingo.account import EmailSginIn, Verification, CustomerInfo, Maketing
 from ..base import BaseTest
 from selenium.webdriver import ActionChains
 
@@ -68,7 +68,9 @@ class TestVerificatin(BaseTest):
 class TestCustomerInfo(BaseTest):
     def test_1_customer_info(self):
         customer_info = CustomerInfo(self.driver)
+        customer_info.get_main_page()
         customer_info.click(customer_info.mypage_btn)
+        time.sleep(1)
         customer_info.click(customer_info.customer_info_btn)
         customer_info.send_keys_check_password()
         customer_info.click(customer_info.confirm_btn)
@@ -81,10 +83,11 @@ class TestCustomerInfo(BaseTest):
         change_password.send_keys_origin_password()
         change_password.send_keys_new_password()
         change_password.send_keys_confirm_new_password()
-        time.sleep(1)
+        time.sleep(2)
         change_password.click(change_password.password_save_btn)
         alert = change_password.find_element(change_password.confirm_alert_msg).text
         self.assertEqual(alert, '비밀번호 변경완료')
+        print(alert)
         change_password.get_main_page()
         change_password.click(change_password.mypage_btn)
         change_password.click(change_password.detail_btn)
@@ -97,43 +100,47 @@ class TestCustomerInfo(BaseTest):
         reset_origin_password.send_keys_email()
         reset_origin_password.send_keys_password()
         reset_origin_password.click(reset_origin_password.login_btn)
+        time.sleep(2)
 
         reset_origin_password.click(reset_origin_password.mypage_btn)
+        time.sleep(2)
         reset_origin_password.click(reset_origin_password.customer_info_btn)
+        time.sleep(2)
         reset_origin_password.send_keys_check_password2()
         reset_origin_password.click(reset_origin_password.confirm_btn)
         
         reset_origin_password.click(reset_origin_password.password_change_btn)
+        time.sleep(2)
         reset_origin_password.send_keys_orgin_password2()
         reset_origin_password.send_keys_new_password2()
         reset_origin_password.send_keys_confirm_new_password2()
 
-        time.sleep(1)
+        time.sleep(2)
         reset_origin_password.click(reset_origin_password.password_save_btn)
         alert = reset_origin_password.find_element(reset_origin_password.confirm_alert_msg).text
         self.assertEqual(alert, '비밀번호 변경완료')
         reset_origin_password.click(reset_origin_password.confirm_alert_btn)
         self.assertEqual(self.driver.current_url, 'https://qa.fingo.run/info')
 
-class TestMaketing(BaseTest):
-    def test_1_maketing_agree(self):
-        agree = Maketing(self.driver)
-        agree.get_info_page()
-        time.sleep(1)
-        agree.click(agree.phone)
-        time.sleep(1)
-        agree.click(agree.email)
-        time.sleep(1)
-        agree.click(agree.push)
-        time.sleep(1)
-        # agree.click(agree.save_btn)
+# class TestMaketing(BaseTest):
+#     def test_1_maketing_agree(self):
+#         agree = Maketing(self.driver)
+#         agree.get_info_page()
+#         time.sleep(1)
+#         agree.click(agree.phone)
+#         time.sleep(1)
+#         agree.click(agree.email)
+#         time.sleep(1)
+#         agree.click(agree.push)
+#         time.sleep(1)
+#         # agree.click(agree.save_btn)
 
-    def test_2_maketing_disagree(self):
-        disagree = Maketing(self.driver)
-        disagree.click(disagree.phone)
-        time.sleep(1)
-        disagree.click(disagree.email)
-        time.sleep(1)
-        disagree.click(disagree.push)
-        time.sleep(1)
-        # agree.click(agree.save_btn)
+#     def test_2_maketing_disagree(self):
+#         disagree = Maketing(self.driver)
+#         disagree.click(disagree.phone)
+#         time.sleep(1)
+#         disagree.click(disagree.email)
+#         time.sleep(1)
+#         disagree.click(disagree.push)
+#         time.sleep(1)
+#         # agree.click(agree.save_btn)

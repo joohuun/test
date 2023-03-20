@@ -31,7 +31,7 @@ class EmailSginIn(Base):
 class Verification(Base):
     main_url = "https://qa.fingo.run/"
     signin_url = "https://qa.fingo.run/signin"
-    detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[1]/div[2]/div/button/img')
+    detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[1]/div[3]/div/button/img')
     wallet_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[3]/div/div[3]/div[4]')
     deposit_withdraw_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div/div[1]/div[2]')
     email_confirm_status = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div/div[2]/div/div[1]/div[2]/div[1]/button/div')
@@ -68,9 +68,10 @@ class CustomerInfo(Base):
     info_url = 'https://qa.fingo.run/info'
     signin_url = 'https://qa.fingo.run/signin'
 
-    mypage_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[5]/button[4]/div[1]/img')
+    mypage_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[5]/button[5]')
     customer_info_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div[1]/div[2]/div[1]/div[1]')
     check_password_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div[2]/div[2]/input')
+    # check_password_input = (By.CSS_SELECTOR ,'#root > div.ptr.overflow > div.ptr__children > div.router__container > div.passwordAuth__container > div.passwordAuth__container__info > div.input__container > input')
     confirm_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div[2]/div[3]/button')
 
     # 비밀번호 변경
@@ -81,9 +82,8 @@ class CustomerInfo(Base):
     password_save_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div[7]/button')
     confirm_alert_msg = (By.XPATH, '//*[@id="modal"]/div/div[2]/div[1]/div[1]/div')
     confirm_alert_btn = (By.XPATH, '//*[@id="modal"]/div/div[2]/div[2]/button')
-    detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[1]/div[2]/div/button/img')
+    detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[1]/div[3]/div/button')
     logount_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[3]/div/div[4]/div[2]')
-
     # origin_password 로 다시 변경
     email_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[5]/div[2]/input')
     password_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[5]/div[3]/input')

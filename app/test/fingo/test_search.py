@@ -1,6 +1,5 @@
-
 import time
-from pages.wiprex.search import SearchProduct
+from pages.fingo.search import SearchProduct
 from ..base import BaseTest
 
 

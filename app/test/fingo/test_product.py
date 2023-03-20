@@ -1,5 +1,5 @@
 import time
-from pages.wiprex.product import Product
+from pages.fingo.product import Product
 from ..base import BaseTest
 
 
