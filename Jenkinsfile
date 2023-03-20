@@ -29,14 +29,14 @@ pipeline {
                 """
             }
         }
-        stage('push image to aws ECR') {
-            steps {
-                sh """
-                aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${IMAGE_NAME}'
-                docker push $IMAGE_NAME:latest
-                echo done2
-                """
-            }
-        }
+        // stage('push image to aws ECR') {
+        //     steps {
+        //         sh """
+        //         aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${IMAGE_NAME}'
+        //         echo done2
+        //         docker push $IMAGE_NAME:latest
+        //         """
+        //     }
+        // }
     }
 }
