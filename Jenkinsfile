@@ -32,12 +32,8 @@ pipeline {
         stage('push image to aws ECR') {
             steps {
                 sh """
-                curl -O https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/${ecrLoginHelper}
-                chmod +x ${ecrLoginHelper}
-                mv ${ecrLoginHelper} /usr/local/bin/
-                cd /usr/local/bin
-                aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${IMAGE_NAME}'
-                echo done2
+                
+                aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${IMAGE_NAME}
                 docker push $IMAGE_NAME:latest
                 """
             }
