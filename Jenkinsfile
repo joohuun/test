@@ -1,4 +1,4 @@
-// def mainDir="Chapter02/2-jenkins-docker"
+def mainDir="wiprex"
 // def ecrLoginHelper="docker-credential-ecr-login"
 // def region="<AWS Region>"
 // def ecrUrl="<AWS ECR URL>"
@@ -14,24 +14,11 @@ pipeline {
                 checkout scm
             }
         }
-        stage('done') {
-            steps {
-                sh """
-                echo done1
-                """
-            }
-        }
         stage('Build Image by docker') {
             steps {
                 sh """
-                docker build -t test -f ./Dockerfile.
-                """
-            }
-        }
-        stage('done') {
-            steps {
-                sh """
-                echo done2
+                cd ${mainDir}
+                docker build -t test .
                 """
             }
         }
