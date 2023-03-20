@@ -32,11 +32,8 @@ pipeline {
             steps {
                 sh """
                 aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${IMAGE_NAME}
-                echo ecr 로그인
                 docker push $IMAGE_NAME:latest
-                echo 이미지 푸쉬
                 """
-
             }
         }
         // stage('Build Docker Image & Push to AWS ECR Repository') {
