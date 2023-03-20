@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 from pages.base import Base
-from config.data import email, password, resident_num, my_bank, account_num, new_password
+from config.fingo import email, password, resident_num, my_bank, account_num, new_password
 from selenium.webdriver.common.keys import Keys
 
 
