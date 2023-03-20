@@ -14,10 +14,24 @@ pipeline {
                 checkout scm
             }
         }
+        stage('done') {
+            steps {
+                sh """
+                echo done1
+                """
+            }
+        }
         stage('Build Image by docker') {
             steps {
                 sh """
                 docker build -t test -f ./Dockerfile.
+                """
+            }
+        }
+        stage('done') {
+            steps {
+                sh """
+                echo done2
                 """
             }
         }
