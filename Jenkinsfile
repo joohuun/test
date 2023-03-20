@@ -7,7 +7,7 @@ def repository="test"
 
 def AWS_CREDENTIAL_NAME = "aws-key"
 def ECR_PATH = "541062409049.dkr.ecr.ap-northeast-2.amazonaws.com"
-def IMAGE_NAME = "test"
+def IMAGE_NAME = "541062409049.dkr.ecr.ap-northeast-2.amazonaws.com/test"
 def REGION = "ap-northeast-2"
 
 
@@ -30,10 +30,10 @@ pipeline {
         }
         stage('push image aws ECR') {
             steps {
-                docker.withRegistry("https://${ECR_PATH}", "ecr:${REGION}:${AWS_CREDENTIAL_NAME}") {
-                      docker.image("${IMAGE_NAME}:${BUILD_NUMBER}").push()
-                      docker.image("${IMAGE_NAME}:latest").push()
-                    }
+                sh """
+                aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${IMAGE_NAME}
+                docker push $IMAGE_NAME:latest
+                """
 
             }
         }
@@ -45,8 +45,7 @@ pipeline {
         //                 curl -O https://amazon-ecr-credential-helper-releases.s3.us-east-2.amazonaws.com/0.4.0/linux-amd64/${ecrLoginHelper}
         //                 chmod +x ${ecrLoginHelper}
         //                 mv ${ecrLoginHelper} /usr/local/bin/
-        //                 cd ${mainDir}
-        //                 ./gradlew jib -Djib.to.image=${ecrUrl}/${repository}:${currentBuild.number} -Djib.console='plain'
+
         //             """
         //         }
         //     }
