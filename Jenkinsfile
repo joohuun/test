@@ -42,6 +42,7 @@ pipeline {
                 sh """
                 docker pull $IMAGE_NAME:latest
                 docker run --rm -d  -v /tmp/.X11-unix:/tmp/.X11-unix --name uitest $IMAGE_NAME:latest
+                docker exec -it jenkins pytest app/test/wiprex/test_account.py
                 """
             }
         }
