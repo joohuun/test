@@ -17,7 +17,7 @@ pipeline {
         stage('Build Image by docker') {
             steps {
                 sh """
-                cd ${mainDir}
+                ls
                 docker build -t test .
                 """
             }
