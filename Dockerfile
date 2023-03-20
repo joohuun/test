@@ -22,6 +22,8 @@ COPY requirements.txt ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN apt-get -y install vim
+
 COPY app ./app
 
 CMD ["google-chrome-stable", "--disable-dev-shm-usage", "--remote-debugging-port=9222", "--user-data-dir=./chrometemp", "--disable-gpu", "--disable-setuid-sandbox", "--no-sandbox"]

@@ -11,10 +11,7 @@ from config.tower import (
 class ProductList(Base):
     main_url = tower_base_url
     product_list_url = f"{tower_base_url}product/list"
-    menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-    product_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[4]')
-    product_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[5]/div/div/div/div[1]')
-    copyright_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[5]/div/div/div/div[4]')
+
     search_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[2]/button')
     status_sale = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[1]/div/div/label[2]/span[2]') 
     status_wait = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div[1]/div/div/label[3]/span[2]')
@@ -44,15 +41,13 @@ class ProductList(Base):
 class ProductCreate(Base):
     main_url = tower_base_url
     product_create_url = f"{tower_base_url}product/create"
-    menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-    product_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[4]')
-    product_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[5]/div/div/div/div[2]')
     select_copyright_option = (By.XPATH, '//*[@id="mui-component-select-copyrights0"]')
     select_copyright = (By.CSS_SELECTOR, '#menu-copyrights0 > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:nth-child(80)')
-    price_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div/div[2]/div[1]/div/input')
-    amount_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[1]/div[2]/div/div[2]/div[2]/div/input')
-    create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[2]/button')
+    price_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div/div[2]/div[1]/div/input')
+    amount_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div/div[2]/div[2]/div/input')
+    create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[2]/button')
     alert_msg = (By.XPATH, '/html/body/div[2]/div[3]/div[1]/p')
+    
     create_success_alert = (By.CSS_SELECTOR, '#root > div.jss11 > div > div.MuiAlert-message')
 
     def __init__(self, driver):
@@ -74,9 +69,7 @@ class ProductCreate(Base):
 class CopyrightList(Base):
     main_url = tower_base_url
     copyright_list_url = f"{tower_base_url}product/copyrights"
-    menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-    product_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[4]')
-    copyright_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[5]/div/div/div/div[3]')
+
     search_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[2]/button')
     search_input_copyright_id = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div[1]/div/div[2]/div/input')
     result_copyright_id = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[4]/div[2]/div/div[1]/table/tbody/tr/td[1]/span/a')
@@ -101,20 +94,17 @@ class CopyrightList(Base):
 class CopyrightCretate(Base):
     main_url = tower_base_url
     copyright_create_url = f"{tower_base_url}product/copyright-create"
-    menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-    product_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[4]')
-    copyright_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[5]/div/div/div/div[4]')
-    copyright_id_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[1]/div/div/input')
-    copyright_name_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[2]/div/div[1]/div[1]/div/input')
-    copyrignt_singer_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[2]/div/div[1]/div[2]/div/input')
-    copyright_yield_rate1_input =(By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[3]/div/div[1]/div[2]/div[1]/div/input')
-    copyright_yield_rate2_input =(By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[3]/div/div[1]/div[2]/div[2]/div/input')
-    youtube_url_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[3]/div/div[2]/div[1]/div/input')
-    yotube_description_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[3]/div/div[2]/div[2]/div[2]/div[1]/p')
-    composer_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[4]/div/div[1]/div[2]/div/input')
-    lyricist_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[4]/div/div[2]/div[1]/div/input')
-    arranger_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[3]/div[4]/div/div[2]/div[2]/div/input')
-    create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div[4]/button')
+    copyright_id_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[1]/div/div/input')
+    copyright_name_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[2]/div/div[1]/div[1]/div/input')
+    copyrignt_singer_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[2]/div/div[1]/div[2]/div/input')
+    copyright_yield_rate1_input =(By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[3]/div/div[1]/div[2]/div[1]/div/input')
+    copyright_yield_rate2_input =(By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[3]/div/div[1]/div[2]/div[2]/div/input')
+    youtube_url_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[3]/div/div[2]/div[1]/div/input')
+    yotube_description_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[3]/div/div[2]/div[2]/div[2]/div[1]/p')
+    composer_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[4]/div/div[1]/div[2]/div/input')
+    lyricist_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[4]/div/div[2]/div[1]/div/input')
+    arranger_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[3]/div[4]/div/div[2]/div[2]/div/input')
+    create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[4]/button')
     create_alert_mgs = (By.XPATH, '/div/div[2]')
     create_alert_mgs = (By.CSS_SELECTOR, '#root > div.jss11')
     duple_alert_msg = (By.XPATH, '/div/div[2]')
@@ -161,58 +151,6 @@ class CopyrightCretate(Base):
 
     def send_keys_arranger(self):
         self.send_keys(self.arranger_input, CopyrightData.arranger)
-
-
-
-
-    
-
-
-# class Premium(Base):
-#     main_url = 'http://10.2.1.100:5001/tower/'
-#     menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-#     premium_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[5]')
-#     premium_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[6]/div/div/div/div[1]')
-#     premium_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[6]/div/div/div/div[2]')
-#     premium_copyright_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[6]/div/div/div/div[3]')
-#     premium_copyright_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[6]/div/div/div/div[4]')
-
-
-#     def __init__(self, driver):
-#         super(Premium, self).__init__(driver)
-
-#     def get_main_page(self):
-#         self.get(self.main_url)
-
-
-# class PremiumContract(Base):
-#     main_url = 'http://10.2.1.100:5001/tower/'
-#     menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-#     premium_contract_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[6]')
-#     premium_contract_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[7]/div/div/div/div')
-
-#     def __init__(self, driver):
-#         super(PremiumContract, self).__init__(driver)
-
-#     def get_main_page(self):
-#         self.get(self.main_url)
-
-
-# class PremiumCopyrightInfo(Base):
-#     main_url = 'https://qa.wiprex.com:5003/tower/'
-#     menu_list = (By.XPATH, '//*[@id="root"]/div[1]/header/div/button[1]')
-#     premium_copyright_info_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[7]')
-#     premium_copyright_info_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[8]/div/div/div/div[1]')
-#     premium_copyright_info_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[8]/div/div/div/div[2]')
-#     premium_copyright_analysis_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[8]/div/div/div/div[3]')
-#     premium_copyright_analysis_create = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[8]/div/div/div/div[4]')
-
-
-#     def __init__(self, driver):
-#         super(PremiumCopyrightInfo, self).__init__(driver)
-
-#     def get_main_page(self):
-#         self.get(self.main_url)
 
 
 

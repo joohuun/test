@@ -1,44 +1,52 @@
-# import time
+import time
 
-# from ..base import BaseTest
-# from pages.tower.product import Premium
+from ..base import BaseTest
+from pages.tower.product import Premium
 
 
 
-# class TestPremiumProduct(BaseTest):
-#     def test_get_premium_list(self):
-#         premium_list = Premium(self.driver)
-#         premium_list.get_main_page()
-#         premium_list.click(premium_list.menu_list)
-#         premium_list.click(premium_list.premium_btn)
-#         premium_list.click(premium_list.premium_list)
-#         self.assertEqual(self.driver.current_url, 'http://10.2.1.100:5001/tower/premium/list')
+class TestPremiumProductList(BaseTest):
+    def test_1_get_premium_product_list(self):
+        pass
+
+    def test_2_get_premium_product_list_by_status(self):
+        pass
+
+    def test_3_get_premium_product_list_by_category(self):
+        pass
+
+    def test_4_premium_product_status_update_to_wait(self):
+        pass
+
+    def test_5_premium_product_status_update_to_stop(self):
+        pass
+
+    def test_6_premium_product_status_update_to_sale(self):
+        pass
         
 
-#     def test_create_premium(self):
-#         prmium_create = Premium(self.driver)
-#         prmium_create.get_main_page()
-#         prmium_create.click(prmium_create.menu_list)
-#         prmium_create.click(prmium_create.premium_btn)
-#         prmium_create.click(prmium_create.premium_create)
-#         self.assertEqual(self.driver.current_url, 'http://10.2.1.100:5001/tower/premium/create')
-    
+class TestPremiumProductCreate(BaseTest):
+    def test_1_create_premium_product(self):
+        pass
 
-#     def test_get_premium_copyright_list(self):
-#         premium_copyright_list = Premium(self.driver)
-#         premium_copyright_list.get_main_page()
-#         premium_copyright_list.click(premium_copyright_list.menu_list)
-#         premium_copyright_list.click(premium_copyright_list.premium_btn)
-#         premium_copyright_list.click(premium_copyright_list.premium_copyright_list)
-#         self.assertEqual(self.driver.current_url, 'http://10.2.1.100:5001/tower/premium/copyrights')
-
-    
-#     def test_create_premium_copyright(self):
-#         premium_copyright_create = Premium(self.driver)
-#         premium_copyright_create.get_main_page()
-#         premium_copyright_create.click(premium_copyright_create.menu_list)
-#         premium_copyright_create.click(premium_copyright_create.premium_btn)
-#         premium_copyright_create.click(premium_copyright_create.premium_copyright_create)
-#         self.assertEqual(self.driver.current_url, 'http://10.2.1.100:5001/tower/premium/copyright-create')
+    def test_2_create_premium_product_without_data(self):
+        pass
 
 
+class TestPremiumCopyrightList(BaseTest):
+    def test_1_get_premium_copyright_list(self):
+        pass
+
+    def test_2_get_premium_copyright_by_id(self):
+        pass
+
+    def test_2_get_premium_copyright_by_category(self):
+        pass
+
+
+class TestPremiumCopyrightCreate(BaseTest):
+    def test_1_create_premium_copyright(self):
+        pass
+
+    def test_2_create_premium_copyright_exist_id(self):
+        pass

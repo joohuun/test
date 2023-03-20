@@ -3,7 +3,6 @@ import time
 from ..base import BaseTest
 from pages.tower.account import ManagementAdminUser, ManagementCustomerUser
 from . import (
-    AssertUrl,
     UserType,
 )
 from config.tower import (
@@ -19,23 +18,19 @@ class TestAdminUser(BaseTest):
         management_admin_user.click(management_admin_user.admin_user_management)
         management_admin_user.click(management_admin_user.admin_user_list)
         time.sleep(2)
-        self.assertEqual(self.driver.current_url, AssertUrl.admin_list_url)
+        self.assertEqual(self.driver.current_url, ManagementAdminUser.admin_list_url)
 
 
 class TestCustomerUser(BaseTest):
     def test_1_get_user_list(self):
         management_customer_user = ManagementCustomerUser(self.driver)
-        management_customer_user.get(management_customer_user.main_url)
-        management_customer_user.click(management_customer_user.menu_list)
-        management_customer_user.click(management_customer_user.customer_user)
-        management_customer_user.click(management_customer_user.customer_user_list)
-        time.sleep(2)
-        self.assertEqual(self.driver.current_url, AssertUrl.user_list_url)
+        management_customer_user.get_user_list_page()
+        self.assertEqual(self.driver.current_url, ManagementCustomerUser.user_list_url)
 
 
     def test_2_search_user(self):
         search_user = ManagementCustomerUser(self.driver)
-        search_user.get(search_user.user_list_url)
+        search_user.get_user_list_page()
         search_user.send_keys_user_name()
         time.sleep(2)
         search_user.click(search_user.search_btn)
@@ -46,7 +41,7 @@ class TestCustomerUser(BaseTest):
         
     def test_3_filter_by_normal_user_list(self):
         search_normal_user = ManagementCustomerUser(self.driver)
-        search_normal_user.get(search_normal_user.user_list_url)
+        search_normal_user.get_user_list_page()
         search_normal_user.click(search_normal_user.filter_by_normal)
         search_normal_user.click(search_normal_user.search_btn)
         time.sleep(2)
@@ -61,7 +56,7 @@ class TestCustomerUser(BaseTest):
         
     def test_4_filter_by_kakao_user_list(self):
         seacrh_kakao_user = ManagementCustomerUser(self.driver)
-        seacrh_kakao_user.get(seacrh_kakao_user.user_list_url)
+        seacrh_kakao_user.get_user_list_page()
         seacrh_kakao_user.click(seacrh_kakao_user.filter_by_kakao)
         seacrh_kakao_user.click(seacrh_kakao_user.search_btn)
         time.sleep(2)
@@ -76,7 +71,7 @@ class TestCustomerUser(BaseTest):
 
     def test_5_filter_by_naver_user_list(self):
         search_naver_user = ManagementCustomerUser(self.driver)
-        search_naver_user.get(search_naver_user.user_list_url)
+        search_naver_user.get_user_list_page()
         search_naver_user.click(search_naver_user.filter_by_naver)
         search_naver_user.click(search_naver_user.search_btn)
         time.sleep(2)
@@ -91,7 +86,7 @@ class TestCustomerUser(BaseTest):
         
     def test__6_filter_by_apple_user_list(self):
         search_apple_user = ManagementCustomerUser(self.driver)
-        search_apple_user.get(search_apple_user.user_list_url)
+        search_apple_user.get_user_list_page()
         search_apple_user.click(search_apple_user.filter_by_apple)
         search_apple_user.click(search_apple_user.search_btn)
         time.sleep(2)

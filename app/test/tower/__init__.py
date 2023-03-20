@@ -23,7 +23,7 @@ class ProductCreateAlert:
     
 class CopyrightCreateAlert:
     copyright_create_alert = '저작권 생성 성공'
-    copyright_id_duplicated_alert = 'Copyright의 Id은/는 이미 존재합니다.'
+    copyright_id_is_duplicated_alert = 'Copyright의 Id은/는 이미 존재합니다.'
 
 class CRMAlert:
     crm_create_success = '게시물 생성 성공'
@@ -34,19 +34,6 @@ class CRMStatus:
     post = '게시 완료'
     wait = '대기'
     delete = '삭제'
-    
-
-# class AssertUrl:
-#     admin_list_url = f"{tower_base_url}admin/list"
-#     user_list_url = f"{tower_base_url}users/list"
-#     product_list_url = f"{tower_base_url}product/list"
-#     product_create_url = f"{tower_base_url}product/create"
-#     copyright_list_url = f"{tower_base_url}product/copyrights"
-#     copyright_create_url = f"{tower_base_url}product/copyright-create"
-
-#     notice_list_url = f'{tower_base_url}service/list?tab=0'
-#     news_list_url = f'{tower_base_url}service/list?tab=1'
-
     
 
 
