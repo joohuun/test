@@ -6,7 +6,7 @@ def ecrLoginHelper="docker-credential-ecr-login"
 def repository="test"
 
 def AWS_CREDENTIAL_NAME = "aws-key"
-def ECR_PATH = "541062409049.dkr.ecr.ap-northeast-2.amazonaws.com/test"
+def ECR_PATH = "541062409049.dkr.ecr.ap-northeast-2.amazonaws.com"
 def IMAGE_NAME = "test"
 def REGION = "ap-northeast-2"
 
