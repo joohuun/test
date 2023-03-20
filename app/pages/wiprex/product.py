@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from config.data import gift_phone_num
+from config.fingo import gift_phone_num
 from pages.base import Base
 from selenium.webdriver.common.keys import Keys
 

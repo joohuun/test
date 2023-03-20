@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 from pages.base import Base
-from selenium.webdriver.common.keys import Keys
 from config.tower import (
     tower_base_url,
     CRMData,

@@ -1,7 +1,7 @@
 import time
 
 from ..base import BaseTest
-from pages.tower.product import Premium
+# from pages.tower.product import Premium
 
 
 
