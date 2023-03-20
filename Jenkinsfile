@@ -42,7 +42,7 @@ pipeline {
         stage('pull image from aws ECR') {
             steps {
                 sh """
-                docker pull $IMAGE_NAME:latest
+                echo hello
                 """
             }
         }
