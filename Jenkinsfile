@@ -39,13 +39,13 @@ pipeline {
             }
         }
 
-        stage('pull image from aws ECR') {
-            steps {
-                sh """
-                echo hello
-                """
-            }
-        }
+        // stage('pull image from aws ECR') {
+        //     steps {
+        //         sh """
+        //         echo hello
+        //         """
+        //     }
+        // }
 
 
         // stage('Build Docker Image & Push to AWS ECR Repository') {
