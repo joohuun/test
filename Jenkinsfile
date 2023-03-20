@@ -20,6 +20,7 @@ pipeline {
                 checkout scm
             }
         }
+
         stage('Build Image by docker') {
             steps {
                 sh """
@@ -28,6 +29,7 @@ pipeline {
                 """
             }
         }
+
         stage('push image to aws ECR') {
             steps {
                 sh """
@@ -36,13 +38,16 @@ pipeline {
                 """
             }
         }
-        stage('pull image from aws ECR')
-            steps(
+
+        stage('pull image from aws ECR') {
+            steps {
                 sh """
                 docker pull $IMAGE_NAME:latest
                 docker run --rm -d  -v /tmp/.X11-unix:/tmp/.X11-unix --name uitest $IMAGE_NAME:latest
                 """
-            )
+            }
+        }
+
 
         // stage('Build Docker Image & Push to AWS ECR Repository') {
         //     steps {
