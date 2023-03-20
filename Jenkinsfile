@@ -35,6 +35,7 @@ pipeline {
                 sh """
                 aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${IMAGE_NAME}'
                 docker push $IMAGE_NAME:latest
+                echo done2
                 """
             }
         }
