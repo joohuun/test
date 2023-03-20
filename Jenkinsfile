@@ -1,8 +1,8 @@
 def mainDir="wiprex"
-// def ecrLoginHelper="docker-credential-ecr-login"
+def ecrLoginHelper="docker-credential-ecr-login"
 // def region="<AWS Region>"
 // def ecrUrl="<AWS ECR URL>"
-// def repository="<Image Repository Name>"
+def repository="test"
 // def deployHost="<Deploy VM Private IP>"
 
 pipeline {
@@ -17,11 +17,12 @@ pipeline {
         stage('Build Image by docker') {
             steps {
                 sh """
-                docker build -t test .
+                docker build -t $IMAGE_NAME:$BUILD_NUMBER .
+                docker tag $IMAGE_NAME:$BUILD_NUMBER $IMAGE_NAME:latest
                 """
             }
         }
-        // stage('Build Docker Image by Jib & Push to AWS ECR Repository') {
+        // stage('Build Docker Image & Push to AWS ECR Repository') {
         //     steps {
         //         withAWS(region:"${region}", credentials:"aws-key") {
         //             ecrLogin()
