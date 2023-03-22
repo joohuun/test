@@ -25,7 +25,7 @@ pipeline {
                 sh """
                 echo 1단계
                 docker build -t test .
-                docker tag test zjstl:latest
+                docker tag test zjstl2:latest
                 """
             }
         }
