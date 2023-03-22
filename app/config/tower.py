@@ -1,7 +1,8 @@
 from datetime import datetime
 
 tower_base_url = "http://10.2.1.100:5001/tower/"
-
+email = 'kimju0612@naver.com'
+password = '1234Qwer!!'
 
 
 class AccountData:

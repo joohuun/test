@@ -3,9 +3,42 @@ from selenium.webdriver.common.by import By
 from pages.base import Base
 from config.tower import (
     tower_base_url,
+    email,
+    password,
     AccountData,
 )
 
+
+class SignIn(Base):
+    main_url = f'{tower_base_url}produt/list'
+    signin_url = f'{tower_base_url}signin'
+    email_input = (By.XPATH, '//*[@id="email"]')
+    password_input = (By.XPATH, '//*[@id="password"]')
+    login_btn = (By.XPATH, '//*[@id="root"]/div[1]/main/div/form/button/span[1]')
+
+    #naver
+    naver_url = 'https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com'
+
+    def __init__(self, driver):
+        super(SignIn, self).__init__(driver)
+
+    def get_main_page(self):
+        self.get(self.main_url)
+
+    def get_login_page(self):
+        self.get(self.signin_url)
+
+    def send_keys_email(self):
+        self.send_keys(self.email_input, email)
+
+    def send_keys_password(self):
+        self.send_keys(self.password_input, password)
+    
+    # naver
+    def get_naver_login(self):
+        self.get(self.naver_url)
+
+    
 
 class ManagementAdminUser(Base):
     main_url = tower_base_url
@@ -14,6 +47,12 @@ class ManagementAdminUser(Base):
     admin_user_management = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[2]/div[2]/span')
     admin_user_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[3]/div/div/div/div/div')
     result_msg = (By.XPATH, '//*[@id="root"]/div[2]')
+
+    def __init__(self, driver):
+        super(ManagementAdminUser, self).__init__(driver)
+
+    def get_admin_list_page(self):
+        self.get(self.admin_list_url)
 
 
 class ManagementCustomerUser(Base):

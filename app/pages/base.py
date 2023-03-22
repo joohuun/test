@@ -12,7 +12,6 @@ class Base():
         """ URL 이동 """
         self.driver.get(url)
 
-
     def click(self, locator):
         """ 클릭 """
         try:
