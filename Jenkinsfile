@@ -24,8 +24,8 @@ pipeline {
             steps {
                 sh """
                 echo 1단계
-                docker build -t test .
-                docker tag test zjstl2:latest
+                docker build -t $IMAGE_NAME:$BUILD_NUMBER .
+                docker tag $IMAGE_NAME:$BUILD_NUMBER $IMAGE_NAME:latest
                 """
             }
         }
