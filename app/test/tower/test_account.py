@@ -20,7 +20,7 @@ from config.tower import (
 # Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36
 # Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36
 
-class Testsignin(BaseTest):
+# class Testsignin(BaseTest):
     # def test_naver(self):
     #     signin = SignIn(self.driver)
     #     signin.get_naver_login()

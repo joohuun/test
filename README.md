@@ -18,4 +18,3 @@ docker exec -it chrome pytest app/test/wiprex/
 ```
 docker exec -it chrome pytest app/test/tower/
 ```
-- asaasd
