@@ -34,6 +34,17 @@ class CRMStatus:
     post = '게시 완료'
     wait = '대기'
     delete = '삭제'
+
+
+class PremiumStatus:
+    sale = '판매중'
+    wait = '대기'
+    stop = '정지'
+
+class PremiumProductAlert:
+    create_success = '상품 생성 성공'
+    create_fail = '모든데이터를 입력해주세요'
+
     
 
 

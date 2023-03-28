@@ -8,6 +8,7 @@ from pages.tower.account import (
     SignIn,
     ManagementAdminUser, 
     ManagementCustomerUser,
+    getToken,
 )
 from . import (
     UserType,
@@ -15,65 +16,108 @@ from . import (
 from config.tower import (
     AccountData,
 )
+import json
+from pages.base import LocalStorage
 
+
+url = 'http://10.2.1.100:8000/graphql/'
+query = """
+mutation toeknCreate{
+    tokenCreate(email: "아이디",
+      password: "비밀번호") {
+        token
+        refreshToken
+        csrfToken
+        user {
+            email
+        }
+        errors {
+            field
+            message
+        }
+    }
+}
+"""
+response = requests.post(url, json={'query': query})
+print(json.loads(response.text))
 
 # Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36
 # Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36
 
-# class Testsignin(BaseTest):
-    # def test_naver(self):
-    #     signin = SignIn(self.driver)
-    #     signin.get_naver_login()
-    #     time.sleep(15)
+class Testsignin(BaseTest):
+    def test_Token_Create(self):
+        url = 'http://10.2.1.100:8000/graphql/'
+        query = """
+        mutation toeknCreate{
+            tokenCreate(email: "kimju0612@naver.com",
+            password: "1234Qwer!!") {
+                token
+                refreshToken
+                csrfToken
+                user {
+                    email
+                }
+                errors {
+                    field
+                    message
+                }
+            }
+        }
+        """
+        response = requests.post(url, json={'query': query})
+        data = json.loads(response.text)
+        # print(data, 'data')
+        jwt = data['data']['tokenCreate']['token']
+        print(jwt)
 
-    #     print(self.driver.get_cookies)
+        login = getToken(self.driver)
+        url2 = 'http://10.2.1.100:5001/tower/product/list'
+        headers = {
+            "Authorization" : f"JWT {jwt}"
+        }
+        # s = requests.Session()
+        # s.headers.update(headers)
+        # print(s.headers, "s.headers")
+        response = requests.post(url2, headers=headers)
+        print(response.text)
+        login.get_main_page()
 
-    #     cookies = self.driver.get_cookies()
-    #     cookie_dict = {}
-    #     for cookie in cookies:
-    #         cookie_dict[cookie['name']] = cookie['value']
-    #     print(cookie_dict)
-    #     self.driver.quit()
+        
+
+
 
     # def test_signin(self):
     #     signin = SignIn(self.driver)
     #     signin.get_login_page()
     #     signin.send_keys_email()
     #     signin.send_keys_password()
+        
+
+    #     token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2Nzk5ODI4NzMsImV4cCI6MTY3OTk4NjQ3MywidG9rZW4iOiJ3UXZrd2xaTXg1UTgiLCJlbWFpbCI6ImtpbWp1MDYxMkBuYXZlci5jb20iLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9pZCI6IlZYTmxjam94TVRjeCIsImlzX3N0YWZmIjp0cnVlfQ.eGojJYMl5sLbxvssDrgVlzemZHRgh0hsMKFMrc1w88I"
+    #     url = 'http://10.2.1.100:5001/tower/product/list'
+    #     s = requests.Session()
+    #     headers = {
+    #         "User-Agent" : "Mozilla/4.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+    #         "Authorization" : f"JWT {token}"
+    #     }
+    #     print(s.headers)
+    #     print(s.cookies)
+    #     s.headers.update(headers)
+    #     print(s.headers)
+    
+
     #     signin.click(signin.login_btn)
-    #     time.sleep(15)
+    
 
-    #     print(self.driver.get_cookies)
+    #     response = requests.get(url, headers=headers)
+    #     print(response.headers)
+    #     print(response.text)
+    #     print(response.cookies)
+    #     # print(response.headers)
+    #     signin.get_main_page()
+        
+        
 
-    #     cookies = self.driver.get_cookies()
-    #     cookie_dict = {}
-    #     for cookie in cookies:
-    #         cookie_dict[cookie['name']] = cookie['value']
-    #     print(cookie_dict)
-    #     self.driver.quit()
-
-    #     res = requests.get(self.driver.current_url)
-    #     print(res.headers)
-
-        # url = self.driver.current_url
-        # header_info = {
-        #     "content-type": "application/json",
-        #     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
-        # }
-        # request = urllib.request.Request(url, headers=header_info)
-        # response = urllib.request.urlopen(request)
-        # print(response.geturl())
-        # print(response.info())
-
-
-        # print(self.driver.get_cookies)
-
-        # cookies = self.driver.get_cookies()
-        # cookie_dict = {}
-        # for cookie in cookies:
-        #     cookie_dict[cookie['name']] = cookie['value']
-        # print(cookie_dict)
-        # self.driver.quit()
 
 
 

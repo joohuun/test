@@ -14,7 +14,7 @@ class BaseTest(unittest.TestCase):
         # chrome_options.add_argument("--headless")
         options.set_capability('browserName', 'chrome')
         options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-        options.add_argument("User-Agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36")
+        # options.add_argument("User-Agent=Mozilla/4.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36")
         options.add_argument("content-type=application/json")
         cls.driver = webdriver.Chrome(
             service=Service(ChromeDriverManager().install()), options=options

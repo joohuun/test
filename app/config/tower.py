@@ -4,6 +4,24 @@ tower_base_url = "http://10.2.1.100:5001/tower/"
 email = 'kimju0612@naver.com'
 password = '1234Qwer!!'
 
+query = """
+mutation toeknCreate{
+    tokenCreate(email: "아이디",
+      password: "비밀번호") {
+        token
+        refreshToken
+        csrfToken
+        user {
+            email
+        }
+        errors {
+            field
+            message
+        }
+    }
+}
+"""
+
 
 class AccountData:
     username = '관리자'
@@ -35,3 +53,14 @@ class CopyrightData:
     composer = '김작곡'
     lyricist = '이작사'
     arranger = '김편곡'
+
+
+class PremiumProductData:
+    premium_product_price = '100000'
+    premium_product_amount = '1000'
+
+
+class PremiumCopyrightData:
+    copyright_id = '210629N3'
+    
+
