@@ -36,14 +36,12 @@ class getToken(Base):
         self.get(self.signin_url)
 
 
-class SignIn(Base):
+class SignIn(Base, LocalStorage):
     main_url = f'{tower_base_url}produt/list'
     signin_url = f'{tower_base_url}signin'
     email_input = (By.XPATH, '//*[@id="email"]')
     password_input = (By.XPATH, '//*[@id="password"]')
     login_btn = (By.XPATH, '//*[@id="root"]/div[1]/main/div/form/button/span[1]')
-
-
 
     def __init__(self, driver):
         super(SignIn, self).__init__(driver)

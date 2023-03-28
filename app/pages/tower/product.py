@@ -42,7 +42,7 @@ class ProductCreate(Base):
     main_url = tower_base_url
     product_create_url = f"{tower_base_url}product/create"
     select_copyright_option = (By.XPATH, '//*[@id="mui-component-select-copyrights0"]')
-    select_copyright = (By.CSS_SELECTOR, '#menu-copyrights0 > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:nth-child(80)')
+    select_copyright = (By.CSS_SELECTOR, '#menu-copyrights0 > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded > ul > li:nth-child(37)')
     price_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div/div[2]/div[1]/div/input')
     amount_input = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[1]/div[2]/div/div[2]/div[2]/div/input')
     create_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div[2]/button')
