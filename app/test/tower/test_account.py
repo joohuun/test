@@ -44,7 +44,6 @@ from pages.base import LocalStorage
         # response = requests.get(getToken.main_url)
         # print(response.headers)
 
-        
 
 
 
