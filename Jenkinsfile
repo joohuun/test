@@ -39,7 +39,7 @@ pipeline {
             steps {
                 sshagent(credentials : ["prod"]) {
                     sh "ssh -o StrictHostKeyChecking=no prod@$DeployHost \
-                    aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $IMAGE_NAME; \
+                    'aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $IMAGE_NAME; \
                     docker pull $IMAGE_NAME:latest; \
                     docker run --rm -d  -v /tmp/.X11-unix:/tmp/.X11-unix --name uitest $IMAGE_NAME:latest \
                     docker ps'" 
