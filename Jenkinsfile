@@ -37,13 +37,13 @@ pipeline {
                 """
             }
         }
-        // stage('pull image by aws ECR') {
-        //     steps {
-        //         sh """
-        //         docker pull $IMAGE_NAME:latest
-        //         docker run --rm -d  -v /tmp/.X11-unix:/tmp/.X11-unix --name uitest $IMAGE_NAME:latest
-        //         """
-        //     }
-        // }
+        stage('pull image by aws ECR') {
+            steps {
+                sh """
+                docker pull $IMAGE_NAME:latest
+                docker run --rm -d  -v /tmp/.X11-unix:/tmp/.X11-unix --name uitest $IMAGE_NAME:latest
+                """
+            }
+        }
     }
 }
