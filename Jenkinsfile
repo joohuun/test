@@ -4,12 +4,11 @@ def ecrLoginHelper="docker-credential-ecr-login"
 // def ecrUrl="<AWS ECR URL>"
 // def deployHost="<Deploy VM Private IP>"
 def repository="test"
-
 def AWS_CREDENTIAL_NAME = "aws-key"
 // def ECR_PATH = "541062409049.dkr.ecr.ap-northeast-2.amazonaws.com"
 def IMAGE_NAME = "577561256345.dkr.ecr.ap-northeast-2.amazonaws.com/juhoon-test"
 def REGION = "ap-northeast-2"
-
+def DeployHost = "10.10.1.251"
 
 pipeline {
     agent any
@@ -40,7 +39,6 @@ pipeline {
             steps {
                 sshagent(credentials : ["prod"]) {
                     sh "ssh -o StrictHostKeyChecking=no prod@$DeployHost \
-                    'cd $dir; \
                     aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $IMAGE_NAME; \
                     docker pull $IMAGE_NAME:latest; \
                     docker run --rm -d  -v /tmp/.X11-unix:/tmp/.X11-unix --name uitest $IMAGE_NAME:latest \
