@@ -1,16 +1,32 @@
-# import urllib.parse
-import urllib.request
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import requests
 
-# url = 'http://10.2.1.100:5001/tower/signin'
-# user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36'
-# values = {'email': 'kimju0612@naver.com',
-#           'password': '1234Qwer!!',
-#           'language': 'Python' }
-# headers = {'User-Agent': user_agent}
+# WebDriver를 초기화합니다.
+driver = webdriver.Chrome()
+driver.get("http://10.2.1.100:5001/tower/signin")
 
-# data = urllib.parse.urlencode(values)
-# data = data.encode('ascii')
-# req = urllib.request.Request(url, data, headers)
+# 로그인 정보를 입력합니다.
+username_input = driver.find_element_by_name("username")
+username_input.send_keys("your_username")
+password_input = driver.find_element_by_name("password")
+password_input.send_keys("your_password")
+password_input.send_keys(Keys.ENTER)
 
-# with urllib.request.urlopen(req) as response:
-#     the_page = response.read()
+# JWT 토큰 값을 가져옵니다.
+jwt_url = "https://example.com/api/token"
+response = requests.post(jwt_url, json={"username": "your_username", "password": "your_password"})
+jwt_token = response.json()["token"]
+
+# HTTP 요청 헤더에 JWT 토큰 값을 추가합니다.
+headers = {"Authorization": f"Bearer {jwt_token}"}
+driver.execute_script("window.localStorage.setItem('token', arguments[0]);", jwt_token)
+
+# 로그인 후의 페이지로 이동합니다.
+driver.get("https://example.com/dashboard")
+
+# 로그인 후의 페이지에서 필요한 작업을 수행합니다.
+# ...
+
+# WebDriver를 종료합니다.
+driver.quit()

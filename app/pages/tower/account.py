@@ -58,7 +58,6 @@ class SignIn(Base, LocalStorage):
     def send_keys_password(self):
         self.send_keys(self.password_input, password)
 
-
 class ManagementAdminUser(Base):
     main_url = tower_base_url
     admin_list_url = f'{tower_base_url}admin/list'

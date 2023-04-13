@@ -22,7 +22,6 @@ mutation toeknCreate{
 }
 """
 
-
 class AccountData:
     username = '관리자'
 

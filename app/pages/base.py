@@ -1,6 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, WebDriverException
 from selenium import webdriver
 
 
@@ -44,6 +44,7 @@ class Base():
     def send_keys(self, locator, value):
         """ 인풋 필드 값 입력 """
         self.find_element(locator).send_keys(value)
+
 
 
 class LocalStorage:
