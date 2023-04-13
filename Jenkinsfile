@@ -41,7 +41,7 @@ pipeline {
                     sh "ssh -o StrictHostKeyChecking=no prod@$DeployHost \
                     ' ls; \
                     aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $IMAGE_NAME; \
-                    echo hello'" 
+                    docker ps'" 
                 }
             }
         }
