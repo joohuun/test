@@ -7,5 +7,4 @@ account_num = '30120104383100'
 my_bank = '국민은행'
 gift_phone_num = '01033285781'
 
-
 new_password = 'Qwer1234!!'

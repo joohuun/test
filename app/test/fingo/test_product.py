@@ -1,10 +1,10 @@
 import time
 from pages.fingo.product import Product
-from ..base import BaseTest
+from ..base import FingoBase
 from . import ProductALert
 
 
-# class TestBuyProduct(BaseTest):
+# class TestBuyProduct(FingoBase):
 #     def test_1_추천음원상품구매(self):
 #         buy_product = Product(self.driver)
 #         buy_product.get(buy_product.main_url)
@@ -19,7 +19,7 @@ from . import ProductALert
 #         self.assertEqual(alert, ProductALert.buy_success)
 
 
-# class TestSellProduct(BaseTest):
+# class TestSellProduct(FingoBase):
 #     def test_2_음원반환(self):
 #         sell_product = Product(self.driver)
 #         sell_product.get(sell_product.main_url)
@@ -34,7 +34,7 @@ from . import ProductALert
 #         self.assertEqual(alert, ProductALert.sell_success)        
 
 
-# class TestGiftProduct(BaseTest):
+# class TestGiftProduct(FingoBase):
 #     def test_3_음원선물(self):
 #         gift_product = Product(self.driver)
 #         gift_product.get(gift_product.main_url)
@@ -50,7 +50,7 @@ from . import ProductALert
 #         self.assertEqual(result, "선물하기가 완료되었습니다.")
 
 
-class TestProductList(BaseTest):
+class TestProductList(FingoBase):
     def test_1_product_list_filter_by_남은수량(self):
         pass
 

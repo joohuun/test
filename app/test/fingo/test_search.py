@@ -1,9 +1,9 @@
 import time
 from pages.fingo.search import SearchProduct
-from ..base import BaseTest
+from ..base import FingoBase
 
 
-class Search(BaseTest):
+class Search(FingoBase):
     def test_search_product(self):
         search_product = SearchProduct(self.driver)
         search_product.get(search_product.search_in_url)

@@ -1,13 +1,20 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 
 from pages.base import Base
-from config.fingo import email, password, resident_num, my_bank, account_num, new_password
-from selenium.webdriver.common.keys import Keys
+from config.fingo import (
+    email, password, 
+    resident_num, 
+    my_bank, 
+    account_num, 
+    new_password, 
+    fingo_base_url
+    )
 
 
 class EmailSginIn(Base):
-    main_url = "https://qa.fingo.run/"
-    signin_url = "https://qa.fingo.run/signin"
+    main_url = fingo_base_url
+    signin_url = f"{fingo_base_url}signin"
     email_input = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[2]/div[2]/input')
     password_input = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[2]/div[3]/input')
     login_btn = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[2]/div[4]/button')
@@ -29,17 +36,17 @@ class EmailSginIn(Base):
 
 
 class Verification(Base):
-    main_url = "https://qa.fingo.run/"
-    account_url = ''
+    main_url = fingo_base_url
+    account_url = f"{fingo_base_url}wallet?tab=account"
     detail_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[1]/div[3]/div/button/img')
     wallet_btn = (By.XPATH, '//*[@id="root"]/div[6]/button[4]/div[1]/img')
     deposit_withdraw_btn = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div/div[1]/div[2]/button')
     email_confirm_status = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div/div[2]/div/div[1]/div[1]/div[1]/button/div')
     # 이메일인증
-    email_confirm_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div/div[2]/div/div[1]/div[2]/div[1]/button')
-    resident_num = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div[2]/div[2]/div[2]/input')
-    agree_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div[2]/div[3]/div/button')
-    next_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div[1]/div[4]/div[2]/button')
+    email_confirm_btn = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div/div[2]/div/div[1]/div[2]/div[1]/button/div')
+    resident_num = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[2]/div[2]/div[2]/input')
+    agree_btn = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[2]/div[3]/div/button')
+    next_btn = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[2]/button')
     # 계좌인증
     account_num = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[3]/div[2]/div/input')
     account_confirm_btn = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div/div[2]/div/div[1]/div[1]/div[1]/button/div')
@@ -57,6 +64,9 @@ class Verification(Base):
 
     def get_page(self):
         self.get(self.main_url)
+    
+    def get_account_page(self):
+        self.get(self.account_url)
 
     def send_keys_resident_num(self):
         self.send_keys(self.resident_num, resident_num)
@@ -66,16 +76,13 @@ class Verification(Base):
     
 
 class CustomerInfo(Base):
-    main_url = 'https://qa.fingo.run/'
-    info_url = 'https://qa.fingo.run/info'
-    signin_url = 'https://qa.fingo.run/signin'
+    main_url = fingo_base_url
+    info_url = f"{fingo_base_url}info"
+    signin_url = f"{fingo_base_url}signin"
 
     mypage_btn = (By.XPATH, '//*[@id="root"]/div[6]/button[5]')
-    # //*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]
     customer_info_btn = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]')
-    # //*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[2]/div[2]/input
     check_password_input = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[2]/div[2]/input')
-    # check_password_input = (By.CSS_SELECTOR ,'#root > div.ptr.overflow > div.ptr__children > div.router__container > div.passwordAuth__container > div.passwordAuth__container__info > div.input__container > input')
     confirm_btn = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[2]/div[3]/button')
 
     # 비밀번호 변경
@@ -138,7 +145,7 @@ class CustomerInfo(Base):
 
 
 class Maketing(Base):
-    info_url = 'https://qa.fingo.run/info'
+    info_url = f"{fingo_base_url}info"
     phone = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[4]/div[2]/div[1]/button')
     email = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[4]/div[2]/div[2]/button')
     push = (By.XPATH, '//*[@id="root"]/div[4]/div[2]/div[1]/div[1]/div[4]/div[2]/div[3]/button')

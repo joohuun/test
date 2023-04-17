@@ -9,33 +9,6 @@ from config.tower import (
     AccountData,
 )
 
-
-
-class getToken(Base):
-    graphql_url = 'http://10.2.1.100:8000/graphql/'
-    # query_input = (By.XPATH, '//*[@id="root"]/div/div/div/div[2]/div/div/div[1]/div[2]/div[1]/div[1]')
-    query_input = (By.CSS_SELECTOR, '#root > div > div > div > div.sc-fONwsr.hFUbho > div > div > div.sc-ifAKCX.dAtAHQ > div.sc-eXEjpC.bdygHZ > div.sc-hZSUBg.HwDAJ > div.sc-ifAKCX.dAtAHQ > div > div > div.CodeMirror-scroll')
-    query_btn = (By.XPATH, '//*[@id="root"]/div/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[2]/div')
-    token = (By.XPATH, '//*[@id="root"]/div/div/div/div[2]/div/div/div[1]/div[2]/div[2]/div[3]/div/div/div/div/div[6]/div[1]/div/div/div/div[5]/pre[1]/span/span[5]')
-    signin_url = f'{tower_base_url}signin'
-    main_url = f'{tower_base_url}produt/list'
-
-    def __init__(self, driver):
-        super(getToken, self).__init__(driver)
-
-    def get_graphql_page(self):
-        self.get(self.graphql_url)
-
-    def send_keys_query(self):
-        self.send_keys(self.query_input, query)
-
-    def get_main_page(self):
-        self.get(self.main_url)
-
-    def get_login_page(self):
-        self.get(self.signin_url)
-
-
 class SignIn(Base, LocalStorage):
     main_url = f'{tower_base_url}produt/list'
     signin_url = f'{tower_base_url}signin'

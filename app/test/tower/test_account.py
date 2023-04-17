@@ -1,5 +1,5 @@
 import time
-from ..base import BaseTest
+from ..base import TowerBase
 from pages.tower.account import (
     ManagementAdminUser, 
     ManagementCustomerUser,
@@ -11,13 +11,13 @@ from config.tower import (
     AccountData,
 )
 
-class TestAdminUser(BaseTest):
+class TestAdminUser(TowerBase):
     def test_get_admin_list(self):
         management_admin_user = ManagementAdminUser(self.driver)
         management_admin_user.get_admin_list_page()
         self.assertEqual(self.driver.current_url, ManagementAdminUser.admin_list_url)
 
-class TestCustomerUser(BaseTest):
+class TestCustomerUser(TowerBase):
     def test_1_get_user_list(self):
         management_customer_user = ManagementCustomerUser(self.driver)
         management_customer_user.get_user_list_page()

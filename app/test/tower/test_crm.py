@@ -1,5 +1,5 @@
 import time
-from ..base import BaseTest
+from ..base import TowerBase
 from pages.tower.crm import Notice, News, FAQ, Guide
 from config.tower import (
     CRMData,
@@ -9,7 +9,7 @@ from . import (
     CRMStatus,
 )
 
-class TestNotice(BaseTest):
+class TestNotice(TowerBase):
     def test_1_get_notice_list(self):
         notice_list = Notice(self.driver)
         notice_list.get_notice_list_page()
@@ -61,7 +61,7 @@ class TestNotice(BaseTest):
         self.assertEqual(alert, CRMAlert.crm_update_success)
 
 
-class TestNews(BaseTest):
+class TestNews(TowerBase):
     def test_1_get_news_list(self):
         news_list = News(self.driver)
         news_list.get_news_list_page()
@@ -112,7 +112,7 @@ class TestNews(BaseTest):
         self.assertEqual(alert, CRMAlert.crm_update_success)
 
 
-class TestFAQ(BaseTest):
+class TestFAQ(TowerBase):
     def test_1_get_faq_list(self):
         faq_list = FAQ(self.driver)
         faq_list.get_faq_list_page()
@@ -166,7 +166,7 @@ class TestFAQ(BaseTest):
         self.assertEqual(alert, CRMAlert.crm_update_success)
 
 
-class TestGuide(BaseTest):
+class TestGuide(TowerBase):
     def test_1_get_guide_list(self):
         guide_list = Guide(self.driver)
         guide_list.get_guide_list_page()

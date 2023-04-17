@@ -1,6 +1,6 @@
 import time
 
-from ..base import BaseTest
+from ..base import TowerBase
 from pages.tower.product import ProductList, ProductCreate, CopyrightList, CopyrightCretate
 from selenium.webdriver import ActionChains
 from config.tower import (
@@ -14,7 +14,7 @@ from . import (
     CopyrightCreateAlert,
 )
 
-# class TestProductLis(BaseTest):
+# class TestProductLis(TowerBase):
     # def test_1_get_product_list(self):
     #     product_list = ProductList(self.driver)
     #     product_list.get_product_list_page()
@@ -94,7 +94,7 @@ from . import (
     #     self.assertEqual(product_status, ProductStatus.sale)
 
 
-# class TestProductCreate(BaseTest):
+# class TestProductCreate(TowerBase):
 #     def test_1_create_product(self):
 #         product_create = ProductCreate(self.driver)
 #         product_create.get_product_create_page()
@@ -129,7 +129,7 @@ from . import (
 #         self.assertEqual(alert, ProductCreateAlert.product_create_without_data)
 
 
-# class TestCopyrightList(BaseTest):
+# class TestCopyrightList(TowerBase):
 #     def test_1_get_copyright_list(self):
 #         copyright_list = CopyrightList(self.driver)
 #         copyright_list.get_copyright_list_page()
@@ -171,7 +171,7 @@ from . import (
 #         self.assertEqual(category, Category.dance)
 
 
-# class TestCopyrightCreate(BaseTest):
+# class TestCopyrightCreate(TowerBase):
 #     def test_1_create_copyright(self):
 #         copyright_create = CopyrightCretate(self.driver)
 #         copyright_create.get_copyright_create_page()

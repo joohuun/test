@@ -1,12 +1,12 @@
 import time
 
-from ..base import BaseTest
+from ..base import TowerBase
 from pages.tower.premium import PremiumProductList, PremiumProductCreate, PremiumCopyrigtList
 from . import PremiumStatus, PremiumProductAlert, Category
 from config.tower import PremiumCopyrightData
 
 
-class TestPremiumProductList(BaseTest):
+class TestPremiumProductList(TowerBase):
     def test_1_get_premium_product_list(self):
         prmeium_list = PremiumProductList(self.driver)
         prmeium_list.get_premium_product_list_page()
@@ -68,7 +68,7 @@ class TestPremiumProductList(BaseTest):
         self.assertEqual(result, PremiumStatus.stop)
 
 
-class TestPremiumProductCreate(BaseTest):
+class TestPremiumProductCreate(TowerBase):
     def test_1_create_premium_product(self):
         create_premium_product = PremiumProductCreate(self.driver)
         create_premium_product.get_premium_product_create_page()
@@ -91,7 +91,7 @@ class TestPremiumProductCreate(BaseTest):
         alert = create_premium_product.find_element(create_premium_product.create_fail_alert).text
         self.assertEqual(alert, PremiumProductAlert.create_fail)
 
-class TestPremiumCopyrightList(BaseTest):
+class TestPremiumCopyrightList(TowerBase):
     def test_1_get_premium_copyright_list(self):
         premium_copyright_list = PremiumCopyrigtList(self.driver)
         premium_copyright_list.get_premium_copyright_list_page()
@@ -124,7 +124,7 @@ class TestPremiumCopyrightList(BaseTest):
 
 
 
-# class TestPremiumCopyrightCreate(BaseTest):
+# class TestPremiumCopyrightCreate(TowerBase):
 #     def test_1_create_premium_copyright(self):
 #         pass
 
