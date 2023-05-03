@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 
-from pages.base import Base, LocalStorage
+from pages.base import Base
 from config.tower import (
     tower_base_url,
     email,
@@ -9,7 +9,7 @@ from config.tower import (
     AccountData,
 )
 
-class SignIn(Base, LocalStorage):
+class SignIn(Base):
     main_url = f'{tower_base_url}produt/list'
     signin_url = f'{tower_base_url}signin'
     email_input = (By.XPATH, '//*[@id="email"]')
@@ -53,16 +53,18 @@ class ManagementCustomerUser(Base):
     customer_user = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[3]')
     customer_user_list = (By.XPATH, '//*[@id="root"]/div[1]/div[1]/div/ul/div[4]/div/div/div/div/div')
     search_btn = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div/div[2]/button')
-    serach_input_box = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div/div[1]/div[1]/div[1]/div[2]/div/input')
+    # //*[@id="root"]/div[1]/div[2]/div/div[3]/div/div[1]/div[1]/div[1]/div[2]/div/input
+    # //*[@id="root"]/div[1]/div[2]/div/div[1]/div/div[1]/div[1]/div[1]/div[2]/div/input
+    search_input_box = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div/div[1]/div[1]/div[1]/div[2]/div/input')
     search_result = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div/div[2]/div/div[1]/table/tbody/tr/td[4]/span/a')
     search_result_user_name = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[4]/div[1]/div/div[3]/div[5]/p[2]')
     user_list = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div/div[2]/div/div[1]/table/caption')
     user_result = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[3]/div/div[2]/div/div[1]/table/tbody/tr[1]/td[2]/span/a')
-    
     filter_by_normal = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div/div[1]/div[2]/div[1]/div/div/label[2]/span[2]')
     filter_by_kakao = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div/div[1]/div[2]/div[1]/div/div/label[3]/span[2]')
     filter_by_naver = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div/div[1]/div[2]/div[1]/div/div/label[4]/span[2]')
     filter_by_apple = (By.XPATH, '//*[@id="root"]/div[1]/div[2]/div/div[1]/div/div[1]/div[2]/div[1]/div/div/label[5]/span[2]')
+
 
 
     def __init__(self, driver):
@@ -72,5 +74,5 @@ class ManagementCustomerUser(Base):
         self.get(self.user_list_url) 
 
     def send_keys_user_name(self):
-        self.send_keys(self.serach_input_box, AccountData.username)
+        self.send_keys(self.search_input_box, AccountData.username)
 
