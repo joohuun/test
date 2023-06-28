@@ -5,10 +5,10 @@ def ecrLoginHelper="docker-credential-ecr-login"
 // def deployHost="<Deploy VM Private IP>"
 def repository="test"
 def AWS_CREDENTIAL_NAME = "aws-key"
-// def ECR_PATH = "541062409049.dkr.ecr.ap-northeast-2.amazonaws.com"
-def IMAGE_NAME = "577561256345.dkr.ecr.ap-northeast-2.amazonaws.com/juhoon-test"
-def REGION = "ap-northeast-2"
-def DeployHost = "10.10.1.251"
+
+def IMAGE_NAME = ""
+def REGION = ""
+def DeployHost = ""
 
 pipeline {
     agent any
